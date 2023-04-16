@@ -1,5 +1,8 @@
 <header>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
 
     <style>
     #loader {
@@ -153,10 +156,10 @@
               <div class="dropzone" name="image" id="myDropzone"></div>
               <input type="file" class="form-control" id="image" name="image">
             </div> --}}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                 </form>
                 <div class="mb-3">
-                    <div class="mt-2" id="dataA">
+                    <div class="mt-3" id="dataA">
                         <button id="approve" class="btn btn-primary" style="display:none;">Approve</button>
                         <button id="rent" class="btn btn-primary" style="display:none;">Rent</button>
 
@@ -166,7 +169,6 @@
             <div id="loader" style="display:none;">Loading...</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -1008,7 +1010,6 @@ copyButton.addEventListener("click", copyCurrencyValue);
     });
     //for rent
     let rentTransactionReceipt;
-
     document.getElementById("rent").addEventListener("click", async function() {
         // Step 1: Get values from the UI
         showLoader(true);
@@ -1037,6 +1038,41 @@ copyButton.addEventListener("click", copyCurrencyValue);
             }).on("receipt", (receipt) => {
                 console.log('The rent transaction receipt is:', receipt);
                 rentTransactionReceipt = receipt;
+                const form = document.getElementById("myForm");
+                const formData = new FormData(form);
+                formData.append("metamask_receipt", JSON.stringify(rentTransactionReceipt));
+                const dataObj = Object.fromEntries(formData.entries());
+                dataObj["_token"] = document.querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content");
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('submit-form') }}",
+                    data: dataObj,
+                    success: function(data) {
+                        console.log("Form submitted successfully", data);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Form submitted successfully!',
+                            text: 'Thank you for.',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                        console.error("Error response body:", error
+                            .responseText);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'There was an error submitting the form. Please try again later.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
             });
         } else {
             await contractCollect.methods.CollectV2(tokenAddress, tokenAmountInWei).send({
@@ -1046,37 +1082,46 @@ copyButton.addEventListener("click", copyCurrencyValue);
             }).on("receipt", (receipt) => {
                 console.log('The rent transaction receipt is:', receipt);
                 rentTransactionReceipt = receipt;
+                const form = document.getElementById("myForm");
+                const formData = new FormData(form);
+                formData.append("metamask_receipt", JSON.stringify(rentTransactionReceipt));
+                const dataObj = Object.fromEntries(formData.entries());
+                dataObj["_token"] = document.querySelector('meta[name="csrf-token"]')
+                    .getAttribute("content");
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('submit-form') }}",
+                    data: dataObj,
+                    success: function(data) {
+                        console.log("Form submitted successfully", data);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Form submitted successfully!',
+                            text: 'Thank you for submitting the form.',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.reload();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                        console.error("Error response body:", error
+                            .responseText);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'There was an error submitting the form. Please try again later.',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+
             });
         }
     });
 
-    document.getElementById("myForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        // Get the form data
-        const formData = new FormData(e.target);
-
-        // Add the metamask_receipt data to the form
-        formData.append("metamask_receipt", JSON.stringify(rentTransactionReceipt));
-
-        // Convert FormData to an object
-        const dataObj = Object.fromEntries(formData.entries());
-        dataObj["_token"] = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-
-        // Send the AJAX request
-        $.ajax({
-            type: "POST",
-            url: "{{ route('submit-form') }}",
-            data: dataObj,
-            success: function(data) {
-                console.log("Form submitted successfully", data);
-            },
-            error: function(error) {
-                console.error("Error:", error);
-                console.error("Error response body:", error.responseText);
-            }
-        });
-    });
 
 
 
