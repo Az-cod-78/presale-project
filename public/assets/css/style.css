@@ -1,0 +1,362 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+
+
+/* custome css START */
+
+.para-color-2{
+    color:  #54BEA6 !important;
+}
+
+.head-color{
+    color:  #54BEA6 !important;
+}
+
+.bg-dark{
+    background-color: #11243D !important;
+}
+
+.border-secondary{
+    border-color: #4c6688e1 !important;
+}
+
+.argin-top{
+    margin-top: 80px;
+}
+
+.font-family{
+    font-family: 'Bebas Neue', cursive !important; 
+    font-style: normal;
+}
+
+.para-color{
+    color: #ceefff !important;
+}
+
+.fw-weight{
+    font-weight: 600;
+}
+
+.btn-primary{
+    background-color: #54BEA6 !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+}
+.btn-primary:focus{
+    box-shadow:  0 0 0 0 !important;
+}
+
+.btn-outline-primary{
+    border: 1px solid #54BEA6;
+    color: #88FFE4;
+    font-size: 13px;
+}
+
+.btn-outline-primary:hover{
+    background-color: #54BEA6 !important;
+    color: white !important;
+    border: 1px solid #54BEA6;
+}
+
+.btn-outline-primary:focus{
+    box-shadow:  0 0 0 0 ;
+}
+
+.btn-outline-primary:active{
+    box-shadow:  0 0 0 0 ;
+    
+}
+
+.nav-link{
+    color: white !important;
+    font-size: 13px;
+    font-weight: 600;
+    /* letter-spacing: 2px; */
+}
+
+.shadow-div{
+    position: absolute;
+    width: 100.1px;
+    height: 1000.1px;
+    top: 0%;
+    right: -70px;
+    background: radial-gradient(37.22% 37.22% at 46.6% 50%, #54BEA6 0%, rgba(84, 190, 166, 0) 100%);
+    opacity: 0.2;
+    transform: rotate(42.16deg);
+}
+
+.bg-img{
+    top: 0px !important;
+}
+
+.text-primary{
+    color: #8DB5CF !important;
+}
+
+.text-gold{
+    color: #d6bb84;
+}
+
+.cr-poiter{
+    cursor: pointer;
+}
+
+.lt-sp{
+    letter-spacing: 5px;
+}
+
+.lt-sp2{
+    letter-spacing: 3px;
+}
+
+.font-size{
+    font-size: 14px;
+}
+/* custome css END */
+
+
+body{
+    background: radial-gradient(50% 50% at 50% 50%, #061B2A 0%, #061B2A 100%);
+    overflow-x: hidden;
+}
+
+.navbar{
+    background-color: #061528 !important;
+}
+
+#hero{
+    /* height: 95vh; */
+    background: url(/assets/img/backShadow.png) no-repeat center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 0;
+}
+
+.hero-head{
+    font-size: 70px;
+    letter-spacing: 5px;
+
+}
+
+.play-btn{
+    font-size: 75px;
+}
+
+
+#coins-sec{
+    /* background: linear-gradient(180deg, #54BEA6 -91.17%, rgba(84, 190, 166, 0.298615) 10.4%, rgba(84, 190, 166, 0) 163.25%); */
+    background: url(/assets/img/imgsection.png) no-repeat center;
+    background-size: cover;
+    margin-top: 70px !important;
+    /* height: 400px; */
+    position: relative;
+}
+
+
+
+#section-3{
+    background: url(/assets/img/backShadow.png) no-repeat center;
+    background-size: 430px;
+    height: 500px;
+    margin-top: 120px;
+}
+
+#sec-4{
+    position: relative;
+    top: 120px;
+}
+
+#sec-4::after{
+    content: '';
+    width: 100%;
+    height: 100% ;
+    position: absolute;
+    top: 0;
+    background: radial-gradient(37.22% 37.22% at 46.6% 50%, #54BEA6 0%, rgba(84, 190, 166, 0) 100%) ;    opacity: 0.4;
+    opacity: 0.4;
+}
+
+
+#sec-table{
+    margin-top: 270px;
+}
+
+#sec-6{
+    margin-top: 200px;
+    background: url('/assets/img/image 207.png') no-repeat center;
+    background-size: cover;
+}
+
+#sec-7{
+    background: linear-gradient(180deg, #54BEA6 -91.17%, rgba(84, 190, 166, 0.298615) 10.4%, rgba(84, 190, 166, 0) 163.25%);
+    margin-top: -70px;
+}
+
+#sec-8{
+    margin-top: 100px;
+}
+
+#sec-9{
+    background: rgba(29, 74, 78, 0.22);
+}
+
+#sec-10{
+    margin-top: 150px;
+}
+
+#sec-10::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 800px;
+    background: radial-gradient(37.22% 37.22% at 46.6% 50%, #54BEA6 0%, rgba(84, 190, 166, 0) 100%) ;
+    opacity: 0.4;
+}
+
+.sale-detail-card{
+    border: 2px solid rgb(189, 189, 189);
+    background-color: #085B56;
+    border-radius: 15px;
+}
+
+.withdraw-card{
+    background-color: #8DB5CF;
+    border-radius: 10px;
+}
+
+.time-count{
+    background-color: #032A28;
+    border-radius: 10px;
+}
+
+#faq{
+    margin-top: 150px;
+}
+
+
+.accordion-item {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-right: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-left: 2px solid rgba(255, 255, 255, 0.3)!important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 15px 15px 15px 15px !important;
+}
+
+.accordion-button{
+    background-color: rgba(2, 2, 2, 0) !important;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: none;
+    border-radius: 15px !important;
+}
+
+.accordion-button:focus  .accordion-item{
+    background: linear-gradient(180deg, #032A28 0%, #053D38 100%);
+}
+
+.active-accordian{
+    background: linear-gradient(180deg, #032A28 0%, #053D38 100%);
+}
+
+.accordion-button::after{
+    background: none !important;
+}
+
+.accordion-body{
+    border-radius: 12px;
+}
+
+
+.footer{
+    background-color: #061528;
+}
+
+.footer-link{
+    font-size: 12px !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.active-link{
+    color: #6cf0e7 !important;
+}
+
+
+
+/* buy cards page css start */
+
+
+#all-cards{
+    background: url(/assets/img/ILLUSTRAION.png) no-repeat center;
+    background-repeat: no-repeat;
+    background-position: start;
+    background-size: cover;
+}
+
+.card-info-text{
+    font-size: 55px;
+}
+
+.buy-card{
+    background: linear-gradient(180deg, rgba(200, 200, 200, 0.15) -17.22%, rgba(200, 200, 200, 0) 100%), linear-gradient(180deg, #00564F 0%, #032A2F 100%);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 15px;
+    position: relative;
+}
+
+.card-btn{
+    background: linear-gradient(180deg, #4FD9BA 0%, #175F5B 100%);
+    border: 0.660714px solid #FFFFFF;
+    padding: 10.5714px 21.1429px;
+    color: black;
+    font-weight: 700;
+    border-radius: 5.28571px;
+}
+
+.btn-primary:hover{
+    border: 0.660714px solid #FFFFFF;
+}
+
+#card-page-faq{
+    margin-top: 100px;
+}
+
+
+@media screen and (max-width: 952px) {
+    .hero-head{
+        font-size: 50px !important;
+    }
+    .thumbnail-img{
+        width: 100% !important;
+    }
+    .section-3-text{
+        padding:  0 !important;  
+    }
+
+    #section-3{
+        margin-top: 400px !important;
+    }
+    #sec-7{
+        margin-top: 70px;
+    }
+    .group-img{
+        margin-top: 30px !important;
+    }
+    .sec-7-back-img{
+        display: none !important;
+    }
+    .cards-back-img{
+        right: 35% !important;
+    }
+}
+
+
+@media screen and (max-width: 460px) {
+    .hero-head{
+        font-size: 35px !important;
+    }
+    .cards-back-img{
+        right: 25% !important;
+    }
+}
