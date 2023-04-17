@@ -963,10 +963,11 @@ copyButton.addEventListener("click", copyCurrencyValue);
 
         if (currencyAddress === "0x2170Ed0880ac9A755fd29B2688956BD959F933F8") { // ETH
             const response = await fetch(
-                `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${currencyAddress}&vs_currencies=usd`
+                `https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd` // Updated URL
             );
             const data = await response.json();
-            return data[currencyAddress].usd;
+            console.log('ETH data:', data);
+            return data.ethereum.usd; // Updated data access
         } else if (currencyAddress === "0x0000000000000000000000000000000000000000") { // BNB
             const response = await fetch(
                 `https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`
@@ -978,6 +979,7 @@ copyButton.addEventListener("click", copyCurrencyValue);
             return 1;
         }
     }
+
 
 
     //for showhide functionality
