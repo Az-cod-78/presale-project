@@ -166,6 +166,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="loader" style="display:none;">Loading...</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -956,6 +957,29 @@ copyButton.addEventListener("click", copyCurrencyValue);
 
         return tokenAddress;
     }
+    async function fetchUSDValue() {
+        const selectedRadio = document.querySelector('input[name="payment_currency"]:checked');
+        const currencyAddress = selectedRadio.value;
+
+        if (currencyAddress === "0x2170Ed0880ac9A755fd29B2688956BD959F933F8") { // ETH
+            const response = await fetch(
+                `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${currencyAddress}&vs_currencies=usd`
+            );
+            const data = await response.json();
+            return data[currencyAddress].usd;
+        } else if (currencyAddress === "0x0000000000000000000000000000000000000000") { // BNB
+            const response = await fetch(
+                `https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd`
+            );
+            const data = await response.json();
+            return data.binancecoin.usd;
+        } else if (currencyAddress === "0x55d398326f99059fF775485246999027B3197955" || currencyAddress ===
+            "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56") { // USDT or BUSD
+            return 1;
+        }
+    }
+
+
     //for showhide functionality
     document.querySelectorAll('input[type=radio][name=payment_currency]').forEach((radio) => {
         radio.addEventListener('change', () => {
@@ -970,6 +994,8 @@ copyButton.addEventListener("click", copyCurrencyValue);
         });
     });
     //for approval
+
+
     document.getElementById("approve").addEventListener("click", async function() {
         // Step 1: Get values from the UI
         showLoader(true);
@@ -978,7 +1004,8 @@ copyButton.addEventListener("click", copyCurrencyValue);
         const tokenAddress = getSelectedTokenAddress();
         const inputAmount = document.getElementById("tokenAmount").value;
 
-        let usdValue = 350; // Value from CoinGecko
+        let usdValue = await fetchUSDValue(); // Value from CoinGecko
+        console.log(usdValue);
         let tokenAmount = inputAmount / usdValue;
         let tokenAmountInWei;
 
@@ -1018,7 +1045,8 @@ copyButton.addEventListener("click", copyCurrencyValue);
         const tokenAddress = getSelectedTokenAddress();
         const inputAmount = document.getElementById("tokenAmount").value;
 
-        let usdValue = 350; // Value from CoinGecko
+        let usdValue = await fetchUSDValue();
+        console.log(usdValue); // Value from CoinGecko
         let tokenAmount = inputAmount / usdValue;
         let tokenAmountInWei;
 
@@ -1130,6 +1158,8 @@ copyButton.addEventListener("click", copyCurrencyValue);
     function showLoader(show) {
         document.getElementById("loader").style.display = show ? "block" : "none";
     }
+
+
 })();
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
